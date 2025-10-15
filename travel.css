@@ -1,0 +1,96 @@
+.container {
+  background-image: url(./Sydney-harbour.jpg) !important;
+  background-size: cover;
+  background-position: center;
+  height: 88vh;
+  width: 100%;
+  padding: 0 !important;
+  max-width: 1500px !important;
+}
+h1 {
+  color: white !important;
+  font-size: 50px;
+  font-weight: bold;
+  padding-top: 210px;
+  padding-left: 20px;
+  /* text-shadow: 2px 2px 4px #000000; */
+}
+.bookNow {
+  margin-left: 20px !important;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #4ec4d1;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px !important;
+}
+p {
+  color: white !important;
+  font-size: 16px;
+  padding-left: 20px;
+}
+.para {
+  height: 70px;
+  width: 500px;
+}
+.header_search {
+  width: 260px !important;
+}
+.social {
+  margin-top: 50vh !important;
+  margin-left: 10px;
+}
+.social_icons {
+  height: 24px;
+  width: 24px;
+  margin-top: 20px;
+}
+.heading {
+  font-size: 50px !important;
+}
+.para_about {
+  color: white !important;
+  font-size: 16px;
+  padding-left: 20px;
+  margin-right: 200px;
+  background: #28606772;
+}
+.about.card {
+  background-color: #103152ac !important;
+}
+.para_about_card {
+  padding: 20px;
+  color: white !important;
+  font-size: 16px;
+  visibility: hidden;
+  text-emphasis: none;
+  width: 20ch; /* roughly 30 characters depending on font */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  visibility: visible;
+}
+.profile_span {
+  height: 50px !important;
+  width: 50px !important;
+  border-radius: 5px;
+  background: #023c83;
+  padding: 5px;
+}
+.profile_span img {
+  height: 20px;
+  width: 20px;
+}
+.name {
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+}
+.card_container{
+    height: 150px !important;
+}
+.card_container .row{
+    height: 150px !important;
+}
