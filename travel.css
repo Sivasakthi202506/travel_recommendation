@@ -98,6 +98,10 @@ p {
 }
 .card_container{
     height: 150px !important;
+    padding-top: 15px;
+    padding-left: 15px;
+    background: #4eb9d179;
+    margin-right: 200px;
 }
 .card_container .row{
     height: 150px !important;
