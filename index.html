@@ -75,7 +75,7 @@
   </div>
 
   <!-- Cards Section -->
-  <div class="search_conatiner mt-4">
+ <div class="search_conatiner mt-4" id="searchContainer" style="display: none;">
     <div id="cards-container" class="d-flex flex-wrap justify-content-center"></div>
   </div>
 
@@ -129,6 +129,34 @@
         displayCities(filtered);
       }
     });
+  </script>
+  <script>
+    function displayCities(cities) {
+  const container = document.getElementById("cards-container");
+  const searchContainer = document.getElementById("searchContainer");
+
+  container.innerHTML = "";
+
+  if (cities.length === 0) {
+    searchContainer.style.display = "none"; // Hide if no results
+    return;
+  }
+
+  searchContainer.style.display = "block"; // Show if results exist
+
+  cities.forEach(city => {
+    const card = document.createElement("div");
+    card.className = "search_card";
+
+    card.innerHTML = `
+      <img src="${city.imageUrl}" alt="${city.name}">
+      <p><strong>${city.name}</strong></p>
+      <p>${city.description}</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
   </script>
 </body>
 </html>

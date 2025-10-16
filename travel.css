@@ -116,3 +116,13 @@ p {
     text-align: center;
     margin-bottom: 15px;
 }
+.cards-container{
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+}
+.search_card{
+    background: blue !important;
+}
