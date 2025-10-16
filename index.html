@@ -75,88 +75,69 @@
   </div>
 
   <!-- Cards Section -->
- <div class="search_conatiner mt-4" id="searchContainer" style="display: none;">
-    <div id="cards-container" class="d-flex flex-wrap justify-content-center"></div>
-  </div>
+<div class="search_conatiner mt-4" id="searchContainer" style="display: none;">
+  <div id="cards-container" class="d-flex flex-wrap justify-content-center"></div>
+</div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    let allCities = [];
+ <script>
+  let allCities = [];
 
-    // Toggle search box
-    document.getElementById("searchToggle").addEventListener("click", function () {
-      const searchBox = document.getElementById("searchBox");
-      searchBox.style.display = searchBox.style.display === "none" ? "block" : "none";
-    });
+  // Toggle search box
+  document.getElementById("searchToggle").addEventListener("click", function () {
+    const searchBox = document.getElementById("searchBox");
+    searchBox.style.display = searchBox.style.display === "none" ? "block" : "none";
+  });
 
-    // Fetch data from JSON
-    fetch("travel_recommendation_api.json")
-      .then(response => response.json())
-      .then(data => {
-        allCities = data.countries.flatMap(country => country.cities);
-        displayCities(allCities); // Show all cities initially
-      })
-      .catch(error => console.error("Error loading JSON:", error));
+  // Fetch data from JSON
+  fetch("travel_recommendation_api.json")
+    .then(response => response.json())
+    .then(data => {
+      allCities = data.countries.flatMap(country => country.cities);
+      displayCities(allCities); // Show all cities initially
+    })
+    .catch(error => console.error("Error loading JSON:", error));
 
-    // Display cards
-    function displayCities(cities) {
-      const container = document.getElementById("cards-container");
-      container.innerHTML = "";
+  // Display cards with conditional visibility
+  function displayCities(cities) {
+    const container = document.getElementById("cards-container");
+    const searchContainer = document.getElementById("searchContainer");
 
-      cities.forEach(city => {
-        const card = document.createElement("div");
-        card.className = "search_card";
+    container.innerHTML = "";
 
-        card.innerHTML = `
-          <img src="${city.imageUrl}" alt="${city.name}">
-          <p><strong>${city.name}</strong></p>
-          <p>${city.description}</p>
-        `;
-
-        container.appendChild(card);
-      });
+    if (cities.length === 0) {
+      searchContainer.style.display = "none"; // Hide if no results
+      return;
     }
 
-    // Filter on input
-    document.addEventListener("input", function (e) {
-      if (e.target.classList.contains("header_search")) {
-        const keyword = e.target.value.toLowerCase();
-        const filtered = allCities.filter(city =>
-          city.name.toLowerCase().includes(keyword) ||
-          city.description.toLowerCase().includes(keyword)
-        );
-        displayCities(filtered);
-      }
+    searchContainer.style.display = "block"; // Show if results exist
+
+    cities.forEach(city => {
+      const card = document.createElement("div");
+      card.className = "search_card";
+
+      card.innerHTML = `
+        <img src="${city.imageUrl}" alt="${city.name}">
+        <p><strong>${city.name}</strong></p>
+        <p>${city.description}</p>
+      `;
+
+      container.appendChild(card);
     });
-  </script>
-  <script>
-    function displayCities(cities) {
-  const container = document.getElementById("cards-container");
-  const searchContainer = document.getElementById("searchContainer");
-
-  container.innerHTML = "";
-
-  if (cities.length === 0) {
-    searchContainer.style.display = "none"; // Hide if no results
-    return;
   }
 
-  searchContainer.style.display = "block"; // Show if results exist
-
-  cities.forEach(city => {
-    const card = document.createElement("div");
-    card.className = "search_card";
-
-    card.innerHTML = `
-      <img src="${city.imageUrl}" alt="${city.name}">
-      <p><strong>${city.name}</strong></p>
-      <p>${city.description}</p>
-    `;
-
-    container.appendChild(card);
+  // Filter on input
+  document.addEventListener("input", function (e) {
+    if (e.target.classList.contains("header_search")) {
+      const keyword = e.target.value.toLowerCase();
+      const filtered = allCities.filter(city =>
+        city.name.toLowerCase().includes(keyword) ||
+        city.description.toLowerCase().includes(keyword)
+      );
+      displayCities(filtered);
+    }
   });
-}
-  </script>
+</script>
 </body>
 </html>
